@@ -1,0 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Coffee 메뉴</title>
+</head>
+<body>
+	<div class="container">
+		<h2>커피메뉴</h2>
+			<input type="checkbox" name="menu" value="3000" id="아메리카노">
+			<label for="아메리카노">아메리카노 (3000원)</label>
+	
+	</div>
+
+</body>
+</html>

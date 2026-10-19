@@ -1,0 +1,79 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입 처리</title>
+</head>
+<body>
+	<%
+		request.setCharacterEncoding("utf-8");
+	
+		//RequestJoin.jsp의 입력된 정보를 Request 객체를 통해 
+		//정보를 꺼내오세요
+		
+		
+		
+		String id = request.getParameter("id");
+		String pass= request.getParameter("pass");
+		String passchk = request.getParameter("passchk");
+		String email = request.getParameter("email");
+		String tel = request.getParameter("tel");
+		String[] hobby = request.getParameterValues("hobby");
+		String[] job = request.getParameterValues("job");
+		String[] age = request.getParameterValues("age");
+		String info = request.getParameter("info");
+		
+	%>
+	
+	<table border="1">
+		<tr>
+			<td>id</td>
+			<td><%= id %></td>
+		</tr>
+		<tr>
+			<td>pass</td>
+			<td><%= pass %></td>
+		</tr>
+		<tr>
+			<td>passchk</td>
+			<td><%= passchk %></td>
+		</tr>
+		<tr>
+			<td>tel</td>
+			<td><%= tel %></td>
+		</tr>
+		<tr>
+			<td>email</td>
+			<td><%= email %></td>
+		</tr>
+		<tr>
+			<td>hobby</td>
+			<td><% for(int i=0; i<hobby.length; i++){ %>
+					<%= hobby[i] %>
+				<% } %>
+			</td>
+			
+		</tr>
+		<tr>
+			<td>job</td>
+			<td><%= job %></td>
+		</tr>
+		<tr>
+			<td>age</td>
+			<td><%= age %></td>
+		</tr>
+		<tr>
+			<td>info</td>
+			<td><%= info %></td>
+		</tr>
+		
+	
+	
+	</table>
+	
+	
+	
+</body>
+</html>

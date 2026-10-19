@@ -1,0 +1,60 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" import="java.util.*"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<%!
+		String[] names = {"송중기","전지현","손흥민","김연아","유재석"};
+		int[] basePays = {350,420,280,450,310};
+		int[] years = {5,8,2,10,4};
+		int bonus = 0;
+		int totalPay = 0;
+		String grade = "";
+		
+		public int getBonus(int year){
+			if(year>=7) {
+				bonus = 100; 
+			}else if(year<7 && year>=4) {
+				bonus = 70;
+			}else{
+				bonus = 40;
+			}
+			return bonus;
+		};
+		
+		public int getTotalPay(int basePay, int bonus){
+			totalPay = basePay + bonus;
+			return totalPay;
+		};
+		
+		public String getGrade(int totalPay){
+			(totalPay>=500) ? grade = "A" : 
+				(totalPay<500 && totlaPay>=400) ? grade = "B" :
+					(totalPay<400 && totlaPay>=300) ? grade = "C" : grade = "D" ;
+			return grade;
+		}
+	%>
+	<table border="1"><tr>
+		<th>번호</th><th>이름</th><th>기본급</th><th>연차</th><th>근속수당</th><th>총급여</th><th>등급</th><th>성과 그래프</th> </tr>
+	<%	for(int i=0; i<names.length; i++){	%>
+			<tr>
+				<td><%=i+1 %></td>
+				<td><%=names[i] %></td>
+				<td><%=basePays[i]%></td>
+				<td><%=years[i] %></td>
+				<td><%=getBonus(years[i]) %></td>
+				<td><%=getTotalPay(basePays[i], bonus)%></td>
+				<td><%=getGrade(totalPay)%></td>
+				<td></td>
+			</tr>				
+		}
+	
+	</table>		
+
+</body>
+</html>
