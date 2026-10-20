@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+/* 푸터 전체 영역 */
+.footer {
+    background-color: #1a2e26; /* 이미지와 일치하는 어두운 초록색(딥 그린) 배경 */
+    color: #ffffff;            /* 기본 글자색 흰색 */
+    padding: 30px 40px;        /* 위아래 및 좌우 여백 */
+    font-family: 'Noto Sans KR', sans-serif, Arial, sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+/* OOZY COMPANY 타이틀 */
+.footer h4 {
+    margin: 0 0 16px 0;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+}
+
+/* 중간 본문 텍스트 (상호명, 대표자, 주소, 연락처, 이메일) */
+.footer .middle {
+    margin: 6px 0;
+    font-size: 13px;
+    color: #d1d8d4;            /* 가독성이 좋은 연한 회백색 */
+    line-height: 1.5;
+}
+
+/* 하단 카피라이트 문구 */
+.footer .small {
+    margin-top: 18px;
+    font-size: 12px;
+    color: #9cb0a6;            /* 본문보다 살짝 더 톤 다운된 텍스트 색상 */
+}

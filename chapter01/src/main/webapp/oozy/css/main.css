@@ -1,0 +1,293 @@
+@charset "UTF-8";
+
+/* ==============================
+   OOZY COFFEE - main.css
+   ============================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: "Malgun Gothic", "맑은 고딕", Arial, sans-serif;
+    color: #17231f;
+    background: #ffffff;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* 전체 영역 */
+#wrap {
+    width: 680px;
+    min-height: 548px;
+    margin: 4px auto 0;
+    border: 1px solid #333333;
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+}
+
+/* ==============================
+   Header / Navigation
+   ============================== */
+
+#top {
+    height: 64px;
+    border-bottom: 1px solid #333333;
+    display: flex;
+    align-items: center;
+    padding: 0 70px;
+}
+
+/* header.jsp의 로고 */
+#top h1,
+#top .logo,
+#top .logo a {
+    color: #173f32;
+    text-decoration: none;
+}
+
+#top h1 {
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+/* header / nav가 별도의 영역으로 구성된 경우 */
+#top > header,
+#top > div:first-child {
+    flex: 1;
+}
+
+/* nav.jsp */
+#top nav,
+#top .nav,
+#top ul {
+    display: flex;
+    align-items: center;
+}
+
+#top nav ul,
+#top .nav ul,
+#top ul {
+    list-style: none;
+    gap: 36px;
+}
+
+#top nav a,
+#top .nav a,
+#top li a {
+    color: #111111;
+    text-decoration: none;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+#top nav a:hover,
+#top .nav a:hover,
+#top li a:hover {
+    color: #173f32;
+}
+
+/* nav가 오른쪽에 위치하도록 */
+#top nav,
+#top .nav {
+    margin-left: auto;
+}
+
+/* ==============================
+   Main Content
+   ============================== */
+
+section {
+    flex: 1;
+    min-height: 318px;
+    padding: 27px 70px 30px;
+    background: #fffef9;
+}
+
+/* home.jsp의 일반적인 구성 */
+section h2 {
+    margin: 0 0 20px;
+    text-align: center;
+    font-size: 21px;
+    font-weight: 700;
+    color: #111111;
+}
+
+section p {
+    margin: 0 0 6px;
+    font-size: 14px;
+    color: #222222;
+}
+
+/* 메인 안내문 */
+section .welcome,
+section .home {
+    text-align: center;
+}
+
+section .welcome p,
+section .home p {
+    text-align: left;
+}
+
+/* ==============================
+   Footer
+   ============================== */
+
+footer {
+    min-height: 164px;
+    padding: 39px 70px 12px;
+    background: #1f342b;
+    color: #ffffff;
+}
+
+footer h2,
+footer h3,
+footer .company-title,
+footer .footer-title {
+    margin-bottom: 17px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+footer p {
+    margin-bottom: 5px;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+footer .copyright {
+    margin-top: 16px;
+    font-size: 11px;
+}
+
+/* footer가 div 구조로 작성된 경우 */
+#footer {
+    min-height: 164px;
+    padding: 39px 70px 12px;
+    background: #1f342b;
+    color: #ffffff;
+}
+
+#footer h2,
+#footer h3,
+#footer .company-title,
+#footer .footer-title {
+    margin-bottom: 17px;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+#footer p {
+    margin-bottom: 5px;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+#footer .copyright {
+    margin-top: 16px;
+    font-size: 11px;
+}
+
+/* ==============================
+   Menu List / Menu Insert
+   ============================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 9px 8px;
+    border-bottom: 1px solid #dddddd;
+    text-align: center;
+}
+
+th {
+    background: #eef2ef;
+    font-weight: 700;
+}
+
+input,
+select,
+textarea {
+    font-family: inherit;
+    font-size: 14px;
+}
+
+input,
+select {
+    height: 34px;
+    padding: 4px 8px;
+    border: 1px solid #cccccc;
+}
+
+textarea {
+    padding: 8px;
+    border: 1px solid #cccccc;
+    resize: vertical;
+}
+
+button,
+input[type="submit"],
+input[type="button"] {
+    padding: 7px 15px;
+    border: 0;
+    background: #1f342b;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+    background: #29463a;
+}
+
+/* ==============================
+   Responsive
+   ============================== */
+
+@media (max-width: 720px) {
+    #wrap {
+        width: calc(100% - 20px);
+        margin: 10px auto;
+    }
+
+    #top {
+        padding: 0 25px;
+    }
+
+    section {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    footer,
+    #footer {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+    #top nav ul,
+    #top .nav ul,
+    #top ul {
+        gap: 15px;
+    }
+}

@@ -37,6 +37,7 @@
 			msg = "비밀번호를 입력하세요";
 		}else if(passchk == null || passchk.isEmpty()){
 			msg = "비밀번호 확인를 확인하세요";
+			/* 비밀번호와 비밀번호체크가 같아야 회원가입 성공 */
 		}else if(!pass.equals(passchk)){
 			msg = "비밀번호가 틀립니다.";
 		}else if(email == null || email.isEmpty()){
@@ -72,59 +73,48 @@
 	 -->
 	<script type="text/javascript">
 			alert("<%= msg %>");
-			history.go(-1;)
+			history.go(-1);
 	</script>			
 
-	<%}else {
+	<%}else {	%>
 		
-	} %>
 	<!-- 테이블로 화면 출력 -->
 	<div class=""joinContainer">
 	<h2>회원가입 출력정보</h2>
 	<table width="500" border="1">
 		<tr height="50">
-			<td>id</td>
-			<td><%= id %></td>
+			<td align="center" width="150">아이디</td>
+			<td width="350"><%= id %></td>
 		</tr>
-		<tr>
-			<td>pass</td>
-			<td><%= pass %></td>
+		<tr height="50">
+			<td align="center" width="150">이메일</td>
+			<td width="350"><%= email%></td>
 		</tr>
-		<tr>
-			<td>passchk</td>
-			<td><%= passchk %></td>
+		<tr height="50">
+			<td align="center" width="150">전화번호</td>
+			<td width="350"><%= tel %></td>
 		</tr>
-		<tr>
-			<td>tel</td>
-			<td><%= tel %></td>
-		</tr>
-		<tr>
-			<td>email</td>
-			<td><%= email %></td>
-		</tr>
-		<tr>
-			<td>hobby</td>
-			<td><% for(int i=0; i<hobby.length; i++){ 
+		<tr height="50">
+			<td align="center" width="150">관심분야</td>
+			<td width="350">
+			<% for(int i=0; i<hobby.length; i++){ 
 					out.write(hobby[i]+" ");
 				 } %>
 			</td>
-			
 		</tr>
-		<tr>
-			<td>job</td>
-			<td><%= job %></td>
+		<tr height="50">
+			<td align="center" width="150">직업</td>
+			<td width="350"><%= job %></td>
 		</tr>
-		<tr>
-			<td>age</td>
-			<td><%= age %></td>
+		<tr height="50">
+			<td align="center" width="150">연령</td>
+			<td width="350"><%= age %></td>
 		</tr>
-		<tr>
-			<td>info</td>
-			<td><%= info %></td>
+		<tr height="50">
+			<td align="center" width="150">남기는 말</td>
+			<td width="350"><%= info %></td>
 		</tr>
 		
-	
-	
 	</table>
 	</div>
 	<% } %>
