@@ -1,0 +1,146 @@
+@charset "UTF-8";
+
+/* 기본 스타일 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif, AppleSDGothicNeo, sans-serif;
+    background-color: #fcfcf4; /* 화면 전체 연한 아이보리 배경 */
+    color: #333333;
+}
+
+/* -------------------------------------------------
+   1. 카테고리 메뉴 영역 (.menuList)
+------------------------------------------------- */
+.menuList {
+    width: 100%;
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.menuList ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    background-color: #e8e8e2; /* 카테고리 바 배경색 */
+    border: 1px solid #dddde0;
+}
+
+.menuList ul li {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid #dcdce0;
+}
+
+.menuList ul li:last-child {
+    border-right: none;
+}
+
+.menuList ul li a {
+    display: block;
+    padding: 15px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #555555;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.menuList ul li a:hover {
+    color: #111111;
+}
+
+/* COLD BREW 선택 상태 (.on) */
+.menuList ul li a.on {
+    background-color: #23352c; /* 상단 이미지의 짙은 그린 톤 */
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* -------------------------------------------------
+   2. 상품 리스트 영역 (.itemList)
+------------------------------------------------- */
+.itemList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    max-width: 1200px;
+    margin: 0 auto 60px auto;
+    padding: 0 20px;
+}
+
+/* 개별 상품 아이템 (.item) - 한 줄에 5개 배치 (100% / 5 = 20%) */
+.itemList .item {
+    width: 20%;
+    padding: 20px 15px;
+    margin-bottom: 30px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* 상품 이미지 영역 */
+.itemList .item img {
+    width: 100%;
+    max-width: 150px;
+    height: 180px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+/* 상품명 (title) */
+.itemList .item .title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #222222;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+    word-break: keep-all;
+}
+
+/* 상품 상세 설명 (detail) */
+.itemList .item .detail {
+    font-size: 11px;
+    color: #888888;
+    line-height: 1.35;
+    word-break: keep-all;
+}
+
+/* -------------------------------------------------
+   3. 반응형 미디어 쿼리 (화면 크기에 따른 유연한 배치)
+------------------------------------------------- */
+@media (max-width: 1024px) {
+    .itemList .item {
+        width: 25%; /* 태블릿: 한 줄에 4개 */
+    }
+}
+
+@media (max-width: 768px) {
+    .itemList .item {
+        width: 33.333%; /* 소형 태블릿: 한 줄에 3개 */
+    }
+    
+    .menuList ul {
+        flex-wrap: wrap;
+    }
+    
+    .menuList ul li {
+        flex: 1 1 25%; /* 메뉴 2줄 배치 */
+    }
+}
+
+@media (max-width: 480px) {
+    .itemList .item {
+        width: 50%; /* 모바일: 한 줄에 2개 */
+    }
+    
+    .menuList ul li {
+        flex: 1 1 50%;
+    }
+}

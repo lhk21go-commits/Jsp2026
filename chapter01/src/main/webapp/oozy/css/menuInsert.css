@@ -1,0 +1,155 @@
+@charset "UTF-8";
+
+/* 기본 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif, AppleSDGothicNeo, sans-serif;
+    background-color: #fcfcf4; /* 화면 전체 아이보리 배경 */
+    color: #333333;
+}
+
+/* -------------------------------------------------
+   메뉴 등록 전체 컨테이너 (.menuInsert)
+------------------------------------------------- */
+.menuInsert {
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto 80px auto;
+    text-align: center;
+}
+
+/* 페이지 제목 (메뉴등록) */
+.menuInsert h3 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 30px;
+    letter-spacing: -0.5px;
+}
+
+/* 폼 감싸는 영역 (.wrap) */
+.menuInsert .wrap {
+    display: inline-block;
+    text-align: center;
+}
+
+/* -------------------------------------------------
+   테이블 스타일링 (border="1" 대체)
+------------------------------------------------- */
+.menuInsert table {
+    width: 600px;
+    border-collapse: collapse;
+    background-color: #f7f6f0; /* 테이블 전체 연한 베이지 배경 */
+    border: 1px solid #b8b8b3; /* 테이블 외곽 회색 테두리 */
+    margin-bottom: 20px;
+}
+
+.menuInsert table tr {
+    border-bottom: 1px solid #c8c8c3; /* 행 구분선 */
+}
+
+/* 테이블 좌측 항목명 (TD 1st child) */
+.menuInsert table td:first-child {
+    width: 120px;
+    background-color: #e3dfd3; /* 좌측 레이블 영역의 어두운 베이지 배경 */
+    font-weight: 700;
+    font-size: 15px;
+    color: #222222;
+    text-align: center;
+    vertical-align: middle;
+    padding: 12px 10px;
+    border-right: 1px solid #c8c8c3;
+}
+
+/* 테이블 우측 입력 영역 (TD 2nd child) */
+.menuInsert table td:last-child {
+    text-align: left;
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #444444;
+    vertical-align: middle;
+}
+
+/* -------------------------------------------------
+   입력 폼 요소 (input, select, textarea)
+------------------------------------------------- */
+/* 텍스트 입력창 & 드롭다운 */
+.menuInsert table input[type="text"],
+.menuInsert table select {
+    height: 28px;
+    padding: 2px 6px;
+    border: 1px solid #a0a0a0;
+    background-color: #ffffff;
+    font-size: 13px;
+    color: #333333;
+    outline: none;
+}
+
+/* 메뉴명, 가격 입력창 크기 */
+.menuInsert table input[name="menuName"] {
+    width: 260px;
+    margin-right: 8px;
+}
+
+.menuInsert table input[name="price"] {
+    width: 220px;
+    margin-right: 5px;
+}
+
+/* 드롭다운 (분류) */
+.menuInsert table select[name="section"] {
+    width: 120px;
+}
+
+/* 라디오 버튼 (판매상태) */
+.menuInsert table input[type="radio"] {
+    margin-right: 4px;
+    vertical-align: middle;
+}
+
+.menuInsert table input[type="radio"] + span,
+.menuInsert table td {
+    vertical-align: middle;
+}
+
+/* 설명 (textarea) */
+.menuInsert table textarea,
+.menuInsert table input[type="textarea"] {
+    width: 100%;
+    height: 90px;
+    padding: 8px;
+    border: 1px solid #a0a0a0;
+    background-color: #ffffff;
+    font-size: 13px;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+}
+
+/* -------------------------------------------------
+   하단 버튼 영역 (메뉴등록, 다시쓰기)
+------------------------------------------------- */
+.menuInsert input[type="submit"],
+.menuInsert input[type="reset"] {
+    display: inline-block;
+    padding: 4px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #222222;
+    background-color: #ffffff;
+    border: 1px solid #888888;
+    cursor: pointer;
+    margin: 0 2px;
+    border-radius: 2px;
+}
+
+.menuInsert input[type="submit"]:hover,
+.menuInsert input[type="reset"]:hover {
+    background-color: #f0f0f0;
+    border-color: #555555;
+}

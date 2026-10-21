@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 300" width="200" height="300">
+<defs>
+<linearGradient id="liq" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f5dc3c"/><stop offset="0.22" stop-color="#f0c320"/><stop offset="0.34" stop-color="#2a1108"/><stop offset="0.62" stop-color="#2a1108"/><stop offset="0.75" stop-color="#e9b820"/><stop offset="1" stop-color="#f7d84a"/></linearGradient>
+<linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0" stop-color="#fff" stop-opacity=".35"/><stop offset=".25" stop-color="#fff" stop-opacity="0"/>
+<stop offset=".8" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></linearGradient>
+<clipPath id="cup"><path d="M45 50 L155 50 L142 268 Q141.5 274 136 274 L64 274 Q58.5 274 58 268 Z"/></clipPath>
+</defs>
+<ellipse cx="100" cy="280" rx="46" ry="6" fill="#000" opacity=".12"/>
+<path d="M45 50 L155 50 L142 268 Q141.5 274 136 274 L64 274 Q58.5 274 58 268 Z" fill="#fff" fill-opacity=".55"/>
+<g clip-path="url(#cup)">
+<rect x="30" y="53" width="140" height="227" fill="url(#liq)"/>
+</g>
+<rect x="30" y="0" width="0" height="0"/><path d="M45 50 L155 50 L142 268 Q141.5 274 136 274 L64 274 Q58.5 274 58 268 Z" fill="url(#glass)"/>
+<path d="M45 50 L155 50 L142 268 Q141.5 274 136 274 L64 274 Q58.5 274 58 268 Z" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="2"/>
+<path d="M56 70 L64 250" stroke="#fff" stroke-opacity=".45" stroke-width="5" stroke-linecap="round"/>
+<path d="M52 62 C52 30 80 18 100 22 C122 18 150 32 148 62 Z" fill="#f7e04a"/><path d="M62 60 C62 38 84 30 100 34 C118 30 138 42 136 60 Z" fill="#fbef7e" opacity=".8"/></svg>
