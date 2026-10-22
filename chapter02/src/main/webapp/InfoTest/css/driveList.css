@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+/* 기본 화면 */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #eeeeee;
+    font-family: "Malgun Gothic", "맑은 고딕", Arial, sans-serif;
+    font-size: 12px;
+    color: #333;
+}
+
+/* 주행내역 조회 제목 */
+h3 {
+    width: 365px;
+    margin: 18px auto 12px;
+    padding: 0;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
+}
+
+/* 테이블 */
+table.list {
+    width: 365px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+    background-color: #fff;
+    border: 1px solid #c8c8c8;
+}
+
+/* 제목 행 */
+table.list th {
+    height: 28px;
+    padding: 4px 3px;
+    border: 1px solid #c7c7c7;
+    background-color: #7770d4;
+    color: #fff;
+    text-align: center;
+    font-size: 11px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* 데이터 행 */
+table.list td {
+    height: 27px;
+    padding: 4px 5px;
+    border: 1px solid #d0d0d0;
+    background-color: #fff;
+    color: #555;
+    text-align: center;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+/* 행에 마우스를 올렸을 때 */
+table.list tbody tr:hover td,
+table.list tr:hover td {
+    background-color: #f5f5ff;
+}
+
+/* 열 너비 */
+table.list th:nth-child(1),
+table.list td:nth-child(1) {
+    width: 76px;
+}
+
+table.list th:nth-child(2),
+table.list td:nth-child(2) {
+    width: 48px;
+}
+
+table.list th:nth-child(3),
+table.list td:nth-child(3) {
+    width: 48px;
+}
+
+table.list th:nth-child(4),
+table.list td:nth-child(4) {
+    width: 48px;
+}
+
+table.list th:nth-child(5),
+table.list td:nth-child(5) {
+    width: 48px;
+}
+
+table.list th:nth-child(6),
+table.list td:nth-child(6) {
+    width: 45px;
+}
+
+table.list th:nth-child(7),
+table.list td:nth-child(7) {
+    width: 52px;
+}
+
+/* 숫자 데이터 정렬 */
+table.list td:nth-child(4),
+table.list td:nth-child(5),
+table.list td:nth-child(7) {
+    text-align: right;
+    padding-right: 7px;
+}
+
+/* 날짜 */
+table.list td:first-child {
+    text-align: center;
+}

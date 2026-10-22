@@ -1,75 +1,116 @@
 @charset "UTF-8";
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
-
-html, body {
-    height: 100%;
+/* 기본 화면 */
+* {
+    box-sizing: border-box;
 }
 
 body {
-    font-family: "맑은 고딕", "Malgun Gothic", sans-serif;
-    font-size: 15px;
+    margin: 0;
+    padding: 0;
+    background-color: #eeeeee;
+    font-family: "Malgun Gothic", "맑은 고딕", Arial, sans-serif;
+    font-size: 12px;
+    color: #333;
 }
 
-/* 전체 틀: 브라우저 화면 꽉 채우기 (header / nav / section / footer를 세로로 배치) */
-#wrap {
-    width: 100%;
-    min-height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-/* header */
-header {
-    height: 100px;
-    background-color: #bdd3ea;
+/* 주행내역 조회 제목 */
+h3 {
+    width: 365px;
+    margin: 18px auto 12px;
+    padding: 0;
     text-align: center;
-    line-height: 100px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
 }
-header h2 { font-size: 24px; }
 
-/* nav */
-nav {
-    height: 50px;
-    background-color: #8a86e0;
-    line-height: 50px;
+/* 테이블 */
+table.list {
+    width: 365px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    table-layout: fixed;
+    background-color: #fff;
+    border: 1px solid #c8c8c8;
 }
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-}
-nav li { flex: 1; text-align: center; }
-nav a {
-    display: block;
+
+/* 제목 행 */
+table.list th {
+    height: 28px;
+    padding: 4px 3px;
+    border: 1px solid #c7c7c7;
+    background-color: #7770d4;
     color: #fff;
-    text-decoration: none;
-    font-size: 15px;
-}
-nav a:hover { background-color: #6f6ac9; }
-
-/* section: 남는 공간을 모두 차지 */
-section {
-    flex: 1;
-    padding: 30px 60px;
-    background-color: #e8e8e8;
-}
-section h3 {
     text-align: center;
-    font-size: 22px;
-    margin-bottom: 25px;
+    font-size: 11px;
+    font-weight: bold;
+    white-space: nowrap;
 }
-section p {
-    margin-bottom: 18px;
-    line-height: 1.6;
-}
-section p.bold { font-weight: bold; }
 
-/* footer */
-footer {
-    height: 70px;
-    background-color: #bdd3ea;
+/* 데이터 행 */
+table.list td {
+    height: 27px;
+    padding: 4px 5px;
+    border: 1px solid #d0d0d0;
+    background-color: #fff;
+    color: #555;
     text-align: center;
-    line-height: 70px;
-    font-size: 13px;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+/* 행에 마우스를 올렸을 때 */
+table.list tbody tr:hover td,
+table.list tr:hover td {
+    background-color: #f5f5ff;
+}
+
+/* 열 너비 */
+table.list th:nth-child(1),
+table.list td:nth-child(1) {
+    width: 76px;
+}
+
+table.list th:nth-child(2),
+table.list td:nth-child(2) {
+    width: 48px;
+}
+
+table.list th:nth-child(3),
+table.list td:nth-child(3) {
+    width: 48px;
+}
+
+table.list th:nth-child(4),
+table.list td:nth-child(4) {
+    width: 48px;
+}
+
+table.list th:nth-child(5),
+table.list td:nth-child(5) {
+    width: 48px;
+}
+
+table.list th:nth-child(6),
+table.list td:nth-child(6) {
+    width: 45px;
+}
+
+table.list th:nth-child(7),
+table.list td:nth-child(7) {
+    width: 52px;
+}
+
+/* 숫자 데이터 정렬 */
+table.list td:nth-child(4),
+table.list td:nth-child(5),
+table.list td:nth-child(7) {
+    text-align: right;
+    padding-right: 7px;
+}
+
+/* 날짜 */
+table.list td:first-child {
+    text-align: center;
 }
