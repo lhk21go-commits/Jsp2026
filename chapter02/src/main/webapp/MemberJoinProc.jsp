@@ -222,5 +222,7 @@
 	</table>
 	</div>
 	<% } %>
+	
+	<a href="MemberList.jsp">회원목록으로 가기</a>
 </body>
 </html>

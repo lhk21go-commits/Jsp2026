@@ -39,6 +39,7 @@
 				<td>연령</td>
 				<td>남기는 말</td>
 			</tr>	
+			
 	<%		
 	try{
 		// 드라이버 로딩
@@ -66,9 +67,17 @@
 			<td><%= rs.getString("job")%></td>
 			<td><%= rs.getString("age")%></td>
 			<td><%= rs.getString("info")%></td>
+		</tr>
+		<tr height="50">
+				<td colspan="8" align="center">
+						<button onclick="location.href='main.jsp?page=MemberUpdateForm&id=<%=id %>'">회원수정</button>
+						<button onclick="location.href='main.jsp?page=MemberDeleteForm&id=<%=id %>'">회원삭제</button>
+						<button onclick="location.href='main.jsp?page=MemberList'">목록보기</button>
+						<button onclick="location.href='main.jsp?page=MemberJoin'">회원가입</button>
+				</td>
 		</tr>	
 	</table>
-	<a href="MemberList.jsp">돌아가기</a>
+	<a href="main.jsp?page=MemberList">회원 목록으로</a>
 	<%  }
 		}catch(Exception e){
 			e.printStackTrace();

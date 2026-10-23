@@ -32,6 +32,8 @@
 		contentPage = "carDrive.jsp";
 	}else if("companyStat".equals(pageName)){
 		contentPage = "companyStat.jsp";
+	}else if("carDrive".equals(pageName)){
+		contentPage = "carDrive.jsp";
 	}
 %>
 	<div id="wrap">

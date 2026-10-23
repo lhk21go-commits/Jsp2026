@@ -16,7 +16,9 @@
 <body>  
 	<%
 		request.setCharacterEncoding("utf-8");
-	
+
+		String carNo = request.getParameter("carNo"); //선택하지 않은 처음은 null이기에 예외처리 필요
+		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -35,67 +37,93 @@
 		
 		
 	%>
-	<h3>차량별주행조회</h3>
-	<div class=search align="center">
-		<form action="index.jsp">
-			<select>
-				<option value="">차량선택</option>
-				<%
-					try{
-						Class.forName(driver);
-						con = DriverManager.getConnection(url, user, password);
-						
-						String sql = "select CAR_NO, CAR_MODEL from tbl_car";
-						
-						pstmt = con.prepareStatement(sql);
-						rs = pstmt.executeQuery();
-						
-						while(rs.next()){
-				%>							
-				<option value="<%=rs.getString("CAR_NO")%>">[<%=rs.getString("CAR_NO")%>]&nbsp;<%= rs.getString("CAR_MODEL") %></option>
+		<h3>차량별주행조회</h3>
+			<form action="index.jsp" method="get" name="carform">
+				<input type="hidden" name="page" value="carDrive">
+				<select name="carNo">
+					<option value="">차량선택</option>
+					<option value="10가0001" <%="10가0001".equals(carNo)?"selected" : "" %>>[10가0001]</option>
+					<option value="10가0002" <%="10가0002".equals(carNo)?"selected" : "" %>>[10가0002]</option>
+					<option value="10가0003" <%="10가0003".equals(carNo)?"selected" : "" %>>[10가0003]</option>
+					<option value="10가0004" <%="10가0004".equals(carNo)?"selected" : "" %>>[10가0004]</option>
+					<option value="10가0005" <%="10가0005".equals(carNo)?"selected" : "" %>>[10가0005]</option>
+				</select>
+				<input type="button" value="조회" onclick="chkform()">
+			</form>
 			
-					<%	}	%>
-			</select>
-			<%
-					}catch(Exception e){
-						e.printStackTrace();
-					}finally{
-						if(rs != null){
-							try{
-								rs.close();
-						}catch(Exception e){}
-							
-						}
-						if(con != null){
-							try{
-								con.close();
-						}catch(Exception e){}
-							
-						}
-						if(pstmt != null){
-							try{
-								pstmt.close();
-						}catch(Exception e){}
-							
-						}
-					}
-				%>
-			<input type="submit" value="조회" onclick="chooseCar()" >
-		</form>
-	</div><br>
-	<section>
-	<script type="text/javascript">
-		function chooseCar(){
-			
-		}
-	</script>
-<%-- 		<% 
-			if(contentPage != null){ 
-		%>
-			<jsp:include page="<%=contentPage %>"></jsp:include>
-		<% } %> --%>
-	</section>
+		<!-- null 처리하는 if문 -->
+	<%
+		if(carNo != null && !carNo.isEmpty()){
+	%>
+		<table class="List">
+			<tr>
+				<th>주행일자</th>
+				<th>출발km</th>
+				<th>도착km</th>
+				<th>운행거리</th>
+				<th>부서명</th>
+				<th>주유금액</th>
+			</tr>
+	<%
+		try{
 	
+			Class.forName(driver);
+			con = DriverManager.getConnection(url, user, password);
+			
+			String sql = "select d.DRV_DATE, d.DRV_sTART, d.DRV_END, (d.DRV_END - d.DRV_START) as ch "
+							+ "p.DEPT_NAME, d.DRV_MONEY "
+							+ "from tbl_dept p "
+							+ "inner join tbl_drive d on d.DEPT_CODE = p.DEPT_CODE "
+							+ "where d.CAR_NO = ?";
+			
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, carNo);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()){
+	%>
+	
+			
+										
+				<tr>
+					<td><%= sf02.format(sf.parseObject(rs.getString("d.DRV_DATE"))) %>
+					<td><%= rs.getInt("d.DRV_START") %></td>
+					<td><%= rs.getInt("d.DRV_END") %></td>
+					<td><%= rs.getInt("ch") %></td>
+					<td><%= rs.getString("p.DEPT_NAME") %></td>
+					<td><%= rs.getInt("d.DRV_MONEY") %></td>
+				</tr>
+		<% }	
+		
+				}catch(Exception e){
+					e.printStackTrace();
+				}finally{
+					if(rs != null){
+						try{
+							rs.close();
+					}catch(Exception e){}
+					}
+					if(con != null){
+						try{
+							con.close();
+					}catch(Exception e){}
+					}
+					if(pstmt != null){
+						try{
+							pstmt.close();
+					}catch(Exception e){}
+					}
+				}
+			%>
+		</table>
+	<%	} %>
+			
+		<script type="text/javascript">
+			function chkform(){
+				let f = document.carform;
+				f.submit();
+			}
+		</script>
 	
 </body>
 </html>
