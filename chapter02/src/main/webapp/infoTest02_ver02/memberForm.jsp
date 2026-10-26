@@ -1,83 +1,62 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*"%>
-    <%@ page import="java.sql.*" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<%
-		request.setCharacterEncoding("utf-8");
-	
-		/* DB 접속 정보 */
-		String driver = "com.mysql.cj.jdbc.Driver";
-		String url = "jdbc:mysql://localhost:3306/jspdb?serverTimezone=UTC&useSSL=false";
-		String user = "root";
-		String password = "1234";
-		
-		Connection con = null;
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		
-		SimpleDateFormat sf = new SimpleDateFormat("yyyyMMdd");
-		SimpleDateFormat sf02 = new SimpleDateFormat("yyyy-MM-dd");
-		
-	%>
-	
-	<div class="memberform">
-		<h2>회원목록조회/수정</h2>
-		<table>
-			<tr>
-				<th>회원번호</th>
-				<th>회원성명</th>
-				<th>전화번호</th>
-				<th>주소</th>
-				<th>가입일자</th>
-				<th>고객등급</th>
-				<th>거주지역</th>
-			</tr>
-			
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page import="java.util.*" import="java.sql.*" %>
+<%@ include file="db_conn.jsp" %>
+
+<jsp:include page="header.jsp" />
+<section>
+  <h2>회원목록조회/수정</h2>
+	<table>
+		<tr>
+			<th>회원번호</th>
+			<th>회원성명</th>
+			<th>전화번호</th>
+			<th>주소</th>
+			<th>가입일자</th>
+			<th>고객등급</th>
+			<th>거주지역</th>
+		</tr>
 		<%
-		try {
-		    Class.forName(driver);
-		    con = DriverManager.getConnection(url, user, password);
-		    
-		    String sql = "select * from member_tbl_02";
-		    
-		    pstmt = con.prepareStatement(sql);
-		    rs = pstmt.executeQuery();
-		    
-		    while(rs.next()){
-		 %>
-		 		<tr>
-		 			<td><a href="" method="get"><%=rs.getString("custno") %></a></td>
-		 			<td><%=rs.getString("custname") %></td>
-		 			<td><%=rs.getString("phone") %></td>
-		 			<td><%=rs.getString("address") %></td>
-		 			<td><%=sf02.format(sf.parseObject(rs.getString("joindate"))) %></td>
-		 			<td><%=rs.getString("grade") %></td>
-		 			<td><%=rs.getString("city") %></td>
-	 			</tr>   	
-		  <% } 
-		  } catch (Exception e) {
-		    e.printStackTrace();
-		  } finally {
-		    try {
-		      if (rs != null) rs.close();
-		      if (pstmt != null) pstmt.close();
-		      if (con != null) con.close();
-		    } catch (Exception e) { e.printStackTrace(); }
-		  }
-			
+			String grade = "";
+			String gradeName = "";
+			try{
+				Class.forName(driver);
+				con = DriverManager.getConnection(url, user, password);
+				
+				String sql = "select * from member_tbl_02";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()){
+					grade = rs.getString("grade");
+					if(grade.equals("A")) gradeName = "VIP";
+					else if(grade.equals("B")) gradeName = "일반";
+					else gradeName="직원";
+		%>		
+				<!-- 반복문 안에  -->
+				<!-- 회원번호를 클릭하면 수정화면으로 이동(회원번호를 get방식으로 ) -->
+				<tr>
+					<td><a class="link" href="modForm.jsp?custno=<%=rs.getInt("custno") %>" ><%=rs.getInt("custno") %> </a></td>
+					<td><%=rs.getString("custname") %></td>
+					<td><%=rs.getString("phone") %></td>
+					<td><%=rs.getString("address") %></td>
+					<td><%=rs.getString("joindate") %></td>
+					<td><%=gradeName %></td>
+					<td><%=rs.getString("city") %></td>
+				</tr>			
+		<%		
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}finally{
+				try{
+					if(rs != null) rs.close();
+					if(con != null) con.close();
+					if(pstmt != null) pstmt.close();
+				}catch(Exception e){e.printStackTrace();}
+			}
 		%>
 		
-			
-			
-		</table>
-	</div>
 	
-</body>
-</html>
+	</table>
+</section>
+<jsp:include page="footer.jsp" />

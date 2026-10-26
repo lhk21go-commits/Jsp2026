@@ -2,14 +2,16 @@
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*"%>
-    <%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+<jsp:include page="header.jsp" />
 	<%
 		request.setCharacterEncoding("utf-8");
 	
@@ -30,9 +32,9 @@
 		DecimalFormat df02 = new DecimalFormat("￦#,##0");
 	%>
 	
-	<div class="saleform">
-		<h2>회원매출조회</h2>
-		<table>
+	<section>
+		<h2 align="center">회원매출조회</h2>
+		<table class="form">
 			<tr>
 				<th>회원번호</th>
 				<th>회원성명</th>
@@ -40,24 +42,33 @@
 				<th>매출</th>
 			</tr>
 	<%
+		String grade = "";
+		String gradeName = "";
+			
 		try {
 		    Class.forName(driver);
 		    con = DriverManager.getConnection(url, user, password);
 		    
-		    String sql = "select mb.custno, mb.custname, mb.grade, mn.price "
-		    			+ "from member_tbl_02 mb "
-			    		+ "inner join money_tbl_02 mn on mb.custno = mn.custno";
+		    String sql = "select mb.custno, mb.custname, mb.grade, "
+		    		+"sum(mn.price) as p from member_tbl_02 mb "
+		    		+"inner join money_tbl_02 mn on mb.custno = mn.custno "
+		    		+"group by mb.custno order by sum(mn.price) desc ";
 		    
 		    pstmt = con.prepareStatement(sql);
 		    rs = pstmt.executeQuery();
 		    
 		    while(rs.next()){
+		    	grade = rs.getString("mb.grade");
+		    	if(grade.equals("A")) gradeName = "VIP";
+		    	else if(grade.equals("B")) gradeName = "일반";
+		    	else  gradeName = "직원";
 	 %>
 		 		<tr>
-		 			<td><%=rs.getString("mb.custno") %></a></td>
+		 			<td><%=rs.getInt("mb.custno") %></a></td>
 		 			<td><%=rs.getString("mb.custname") %></td>
-		 			<td><%=rs.getString("mb.grade") %></td>
-		 			<td><%=df02.format(rs.getInt("mn.price")) %></td>
+		 			<td><%=gradeName %></td>
+		 			<td><%=df02.format(rs.getInt("p")) %></td>
+		 		 <%-- <%=String.format("\%,d",rs.getInt("P")) %>도 가능  --%>
 	 			</tr>   	
 			<% } 
 		  } catch (Exception e) {
@@ -73,7 +84,8 @@
 		%>			
 			
 		</table>
-	</div>
-
+	
+	</section>
+	<jsp:include page="footer.jsp" />
 </body>
 </html>
