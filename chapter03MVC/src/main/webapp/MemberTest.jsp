@@ -9,7 +9,7 @@
 <body>
 	<div id="testWrap">
 		<h2>기본 회원가입</h2>
-		formd의 action 속성의 값은 서블릿 매핑주소이다.
+		<!-- form의 action 속성의 값은 서블릿 매핑주소이다. -->
 		<form action="Mproc.do" method="post">
 			<table width="400" border="1">
 				<tr height="40">
