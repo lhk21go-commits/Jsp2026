@@ -1,0 +1,112 @@
+@charset "UTF-8";
+
+/* ===== 게시판 전체 래퍼 ===== */
+.boardwrap {
+    width: 760px;
+    margin: 40px auto;
+    padding: 0 10px;
+    font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    color: #333;
+}
+
+.boardwrap h2 {
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    font-size: 24px;
+    font-weight: 700;
+    text-align: center;
+    
+}
+
+/* ===== 테이블 ===== */
+.boardwrap table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 2px solid #4aa8d8;
+    border-bottom: 1px solid #d9e6ef;
+    font-size: 14px;
+}
+
+.boardwrap table td {
+    padding: 12px 8px;
+    border: none;
+    border-bottom: 1px solid #e5edf3;
+    text-align: center;
+}
+
+/* 글쓰기 버튼이 있는 첫 번째 행 */
+.boardwrap table tr:first-child td {
+    padding: 0 0 12px 0;
+    border-bottom: none;
+    text-align: right;
+}
+
+/* 헤더 행 (번호/제목/작성자/작성일/조회수) */
+.boardwrap table tr:nth-child(2) td {
+    background-color: #eaf5fb;
+    font-weight: 700;
+    color: #2b6f94;
+    border-bottom: 1px solid #b9dcee;
+}
+
+/* 데이터 행 hover 효과 */
+.boardwrap table tr:nth-child(n+3):hover {
+    background-color: #f6fbfe;
+}
+
+/* 제목 칸은 왼쪽 정렬 */
+.boardwrap table tr:nth-child(n+3) td:nth-child(2) {
+    text-align: left;
+}
+
+/* 제목 링크 */
+.boardwrap table a {
+    color: #333;
+    text-decoration: none;
+}
+
+.boardwrap table a:hover {
+    color: #2b8cc4;
+    text-decoration: underline;
+}
+
+/* ===== 글쓰기 버튼 ===== */
+.boardwrap button {
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    background-color: #4aa8d8;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.boardwrap button:hover {
+    background-color: #2b8cc4;
+}
+
+/* ===== 페이징 ===== */
+.boardwrap .pageing {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.boardwrap .pageing a {
+    display: inline-block;
+    margin: 0 2px;
+    padding: 6px 12px;
+    font-size: 14px;
+    color: #555;
+    text-decoration: none;
+    border: 1px solid #d9e6ef;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.boardwrap .pageing a:hover {
+    color: #fff;
+    background-color: #4aa8d8;
+    border-color: #4aa8d8;
+}

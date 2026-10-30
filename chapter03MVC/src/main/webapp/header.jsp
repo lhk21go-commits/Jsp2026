@@ -24,7 +24,7 @@
 						<a href="#" class="nav">예약확인</a>
 					</td>
 					<td align="center" width="200">
-						<a href="#" class="nav">게시판</a>
+						<a href="BoardListCon.do" class="nav">게시판</a>
 					</td>
 					<td align="center" width="200">
 						<a href="index.jsp?section=member/MemberJoin.jsp" class="nav">회원가입</a>
