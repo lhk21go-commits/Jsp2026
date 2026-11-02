@@ -288,5 +288,47 @@ public class MemberDAO {
 		}
 	}
 	
-	//--- 2026 10 29 쿼리문 작성
+	//--- 2026 10 02 쿼리문 작성
+	//----------------------
+	// 모든 상품을 리턴하는 메소드
+	// 메소드 이름 getAllProduct()
+	public ArrayList<CarDTO> getAllProduct() {
+		ArrayList<CarDTO> c = new ArrayList<CarDTO>();
+		
+		try {
+			con = Util.getConnection();
+			
+			String sql = "select * from carproduct";
+			pstmt = con.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				CarDTO cdto = new CarDTO();
+				
+				cdto.setNo(rs.getInt(1));
+				cdto.setCarName(rs.getString(2));
+				cdto.setPrice(rs.getInt(3));
+				cdto.setCompany(rs.getString(4));
+				cdto.setImg(rs.getString(5));
+				cdto.setInfo(rs.getString(6));
+				
+				// ArrayList 에 정보 담기
+				c.add(cdto);
+			}
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			try {
+				if(con != null) con.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			}catch (Exception e) {e.printStackTrace();}
+		}
+		// 리턴 작성
+		return c;
+	}
 }

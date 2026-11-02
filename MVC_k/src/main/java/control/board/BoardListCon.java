@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.catalina.connector.Request;
 
@@ -94,7 +95,18 @@ public class BoardListCon extends HttpServlet {
 		
 		// pageBlock(3)만큼 묶음처리의 끝 페이지 번호를 구하는 로직  
 		endPage = startPage + pageBlock - 1;
+		
+		// 페이징의 번호가 [1][2][3]이 출력되는 경우는 count의 데이터값이 
+		// count 가 10개이면 페이징 번호는 [1][2]만 존재해야함
+		if(endPage > pageCount) {
+			endPage = pageCount;
 		}
+		
+		}
+	//-------------------------------
+	HttpSession session = request.getSession(false);	// 없으면 null나옴
+	String loginId=(String)session.getAttribute("id");
+		
 	//-------------------------------
 	// BoardList.jsp view단으로 Dispatcher 이용하여 떠넘기기
 	request.setAttribute("blist", blist);
@@ -106,7 +118,9 @@ public class BoardListCon extends HttpServlet {
 	request.setAttribute("currentPage", currentPage);
 	request.setAttribute("pageCount", pageCount);
 	request.setAttribute("pageBlock", pageBlock);
+	request.setAttribute("startPage", startPage);
 	request.setAttribute("endPage", endPage);
+	request.setAttribute("id", loginId);
 	
 	
 	RequestDispatcher rd = request.getRequestDispatcher("index.jsp?section=board/BoardList.jsp");

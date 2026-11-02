@@ -5,13 +5,18 @@
 
 <div class="boardwrap">
 	<h2> 전체 게시글 보기</h2>
+	<p>
 	<table width="700" border="1">
 		<tr height="40">
 			<td colspan="5" align="right">
-			<button onclick="location.href='index.jsp?section=board/BoardWriteForm.jsp'">글쓰기
-			</button>
+			<c:if test="${not empty sessionScope.id }">
+				<button onclick="location.href=${not empty sessionScope}?'index.jsp?section=board/BoardWriteForm.jsp':'index.jsp?section=login/loginForm.jsp'">
+				글쓰기</button>
+			</c:if>
+	
 			</td>
 		</tr>
+		
 		<tr hegith="40">
 			<td width="50" align="center">번호</td>
 			<td width="50" align="center">제목</td>
@@ -25,8 +30,12 @@
 		
 			<tr height="40">
 				<td width="50" align="center">${number }</td>
-				<td width="320" align="center">
-				<%-- 	${blist.re_step }	 --%>	
+				<td width="320" align="left">
+					<c:if test="${blist.re_step == 1 }">
+						<c:forEach var='i' begin="1" end="5">
+							&nbsp;
+						</c:forEach>
+					</c:if>
 					<a href="BoardInfoControl.do?num=${blist.num }">${blist.subject }</a>
 				</td>
 				<td width="320" align="center">${blist.writer }</td>
@@ -52,7 +61,7 @@
 	
 		<!-- [다음]이라는 링크를 만들건지 파악 -->
 		<c:if test="${endPage < pageCount }">
-			<a href="BoardListCon.do?pageNum=${startPage + pageBlock}"></a>
+			<a href="BoardListCon.do?pageNum=${startPage + pageBlock}">[다음]</a>
 		</c:if>
 	
 	
